@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movielist</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-4">
+            <h1>Movies</h1>
+        </div>
+        <div class="col-md-4">
+            <h3>Logged in: <span sec:authentication="name"></span></h3>
+        </div>
+        <div class="col-md-4">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-sm btn-danger">
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>ImageFileName</th>
+                    <th>Release Year</th>
+                    <th>Director</th>
+                    <th>Genre</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

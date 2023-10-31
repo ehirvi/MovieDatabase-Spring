@@ -18,9 +18,10 @@ public class Movie {
     @Column(nullable = false, updatable = false)
     private long movie_id;
 
-    private String name;
-    private String description;
-    private String imgFile;
+    private String name, description, imgFile;
+
+    // TODO: Add getter, setter and constructor
+    private int release_year;
 
     @JsonIgnore
     @ManyToOne
