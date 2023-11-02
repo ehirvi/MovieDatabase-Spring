@@ -28,13 +28,13 @@ public class MoviedatabaseApplication {
 		return (args) -> {
 			Director director1 = directorRepo.save(new Director("Christopher Nolan", "null"));
 			Genre genre1 = genreRepo.save(new Genre("Sci-Fi"));
-			Movie movie1 = movieRepo.save(new Movie("Interstellar", "desc", "img", director1 , genre1));
+			Movie movie1 = movieRepo.save(new Movie("Interstellar", "desc", "img", 2014, director1 , genre1));
 
 			Director director2 = directorRepo.save(new Director("Ridley Scott", "null"));
 			Genre genre2 = genreRepo.save(new Genre("Historical"));
-			Movie movie2 = movieRepo.save(new Movie("Gladiator", "desc", "img", director2, genre2));
+			Movie movie2 = movieRepo.save(new Movie("Gladiator", "desc", "img", 2000, director2, genre2));
 
-			log.info("succesfull");
+			log.info("succesful");
 		};
 	}
 

@@ -12,43 +12,44 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Movie {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long movie_id;
+    private long id;
 
     private String name, description, imgFile;
 
-    // TODO: Add getter, setter and constructor
     private int release_year;
 
-    @JsonIgnore
+    // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Director director;
 
-    @JsonIgnore
+    // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    public Movie() {}
+    public Movie() {
+    }
 
-    public Movie(String name, String description, String imgFile, Director director, Genre genre) {
+    public Movie(String name, String description, String imgFile, int release_year, Director director, Genre genre) {
         this.name = name;
         this.description = description;
         this.imgFile = imgFile;
+        this.release_year = release_year;
         this.director = director;
         this.genre = genre;
     }
 
-    public long getMovie_id() {
-        return movie_id;
+    public long getId() {
+        return id;
     }
 
-    public void setMovie_id(long movie_id) {
-        this.movie_id = movie_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -75,20 +76,28 @@ public class Movie {
         this.imgFile = imgFile;
     }
 
-    public Director getDirector() {
-        return director;
+    public int getRelease_year() {
+        return release_year;
+    }
+
+    public void setRelease_year(int release_year) {
+        this.release_year = release_year;
+    }
+
+    public String getDirector() {
+        return director.getName();
     }
 
     public void setDirector(Director director) {
         this.director = director;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public String getGenre() {
+        return genre.getName();
     }
 
     public void setGenre(Genre genre) {
         this.genre = genre;
-    }    
+    }
 
 }

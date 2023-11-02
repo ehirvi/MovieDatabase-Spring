@@ -16,9 +16,9 @@ public class MovieRepositoryTest {
 
     @Test
     public void createNewMovie() {
-        Movie movie = new Movie("Star Wars", "desc", "img", null, null);
+        Movie movie = new Movie("Star Wars", "desc", "img", 1977 , null, null);
         movieRepository.save(movie);
-        Assertions.assertThat(movie.getMovie_id()).isNotNull();
+        Assertions.assertThat(movie.getId()).isNotNull();
     }
 
 }

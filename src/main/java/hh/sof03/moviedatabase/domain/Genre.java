@@ -18,7 +18,7 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long genre_id;
+    private long id;
 
     private String name;
     
@@ -32,12 +32,12 @@ public class Genre {
         this.name = name;
     }
 
-    public long getGenre_id() {
-        return genre_id;
+    public long getId() {
+        return id;
     }
 
-    public void setGenre_id(long genre_id) {
-        this.genre_id = genre_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -33,6 +33,14 @@
                     <th>Director</th>
                     <th>Genre</th>
                 </tr>
+                <tr th:each="movie : ${movies}">
+                    <td><a th:text="${movie.name}" th:href="@{/movielist/{id}(id=${movie.id})}"></a></td>
+                    <td th:text="${movie.description}"></td>
+                    <td th:text="${movie.imgFile}"></td> <!-- TODO: kuva tekstin sijaan -->
+                    <td th:text="${movie.release_year}"></td>
+                    <td th:text="${movie.director}"></td>
+                    <td th:text="${movie.genre}"></td>
+                </tr>
             </tbody>
         </table>
     </div>
