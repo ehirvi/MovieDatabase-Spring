@@ -1,6 +1,6 @@
 package hh.sof03.moviedatabase.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+// import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -84,16 +84,16 @@ public class Movie {
         this.release_year = release_year;
     }
 
-    public String getDirector() {
-        return director.getName();
+    public Director getDirector() {
+        return director;
     }
 
     public void setDirector(Director director) {
         this.director = director;
     }
 
-    public String getGenre() {
-        return genre.getName();
+    public Genre getGenre() {
+        return genre;
     }
 
     public void setGenre(Genre genre) {
