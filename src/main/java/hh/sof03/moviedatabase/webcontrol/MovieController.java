@@ -40,6 +40,14 @@ public class MovieController {
         return "movie";
     }
 
+    @GetMapping("/add")
+    public String addMovie(Model model) {
+        model.addAttribute("movie", new Movie());
+        model.addAttribute("directors", directorRepository.findAll());
+        model.addAttribute("genres", genreRepository.findAll());
+        return "addmovie";
+    }
+
     @PostMapping("/save")
     public String saveMovie(Movie movie) {
         movieRepository.save(movie);
