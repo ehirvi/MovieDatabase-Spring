@@ -14,7 +14,7 @@ import hh.sof03.moviedatabase.domain.Movie;
 import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
-@RequestMapping("/movielist")
+@RequestMapping({"/movielist", "/movielist/"})
 public class MovieController {
 
     @Autowired
@@ -32,12 +32,18 @@ public class MovieController {
         return "movielist";
     }
 
-    @GetMapping("/{id}")
-    public String findMovie(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/edit/{id}")
+    public String editMovie(@PathVariable("id") Long id, Model model) {
         model.addAttribute("movie", movieRepository.findById(id).get());
         model.addAttribute("directors", directorRepository.findAll());
         model.addAttribute("genres", genreRepository.findAll());
         return "movie";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteMovie(@PathVariable("id") Long id) {
+        movieRepository.deleteById(id);
+        return "redirect:/movielist";
     }
 
     @GetMapping("/add")
