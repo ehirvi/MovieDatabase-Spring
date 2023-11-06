@@ -14,7 +14,7 @@ import hh.sof03.moviedatabase.domain.Movie;
 import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
-@RequestMapping({"/movielist", "/movielist/"})
+@RequestMapping("/movielist")
 public class MovieController {
 
     @Autowired

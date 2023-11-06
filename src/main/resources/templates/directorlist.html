@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorlist</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <a href="/" class="btn btn-primary col-auto m-2">Home</a>
+            <h1>Directors</h1>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Movies</th>
+                </tr>
+                <tr th:each="director : ${directors}">
+                    <td th:text="${director.id}"></td>
+                    <td><a th:text="${director.name}" th:href="@{/directorlist/edit/{id}(id=${director.id})}"></a></td>
+                    <td th:text="${director.movies.size}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/directorlist/add" class="btn btn-primary">Add new</a>
+    </div>
+</body>
+
+</html>

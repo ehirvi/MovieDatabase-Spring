@@ -13,7 +13,7 @@ import hh.sof03.moviedatabase.domain.GenreRepository;
 import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
-@RequestMapping({"/genrelist", "/genrelist/"})
+@RequestMapping("/genrelist")
 public class GenreController {
 
     @Autowired
