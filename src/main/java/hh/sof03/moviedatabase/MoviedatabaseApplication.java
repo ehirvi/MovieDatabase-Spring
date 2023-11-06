@@ -26,13 +26,25 @@ public class MoviedatabaseApplication {
 	@Bean
 	public CommandLineRunner movieDemo(MovieRepository movieRepo, GenreRepository genreRepo, DirectorRepository directorRepo) {
 		return (args) -> {
-			Director director1 = directorRepo.save(new Director("Christopher Nolan", "null"));
-			Genre genre1 = genreRepo.save(new Genre("Sci-Fi"));
-			Movie movie1 = movieRepo.save(new Movie("Interstellar", "desc", "img", 2014, director1 , genre1));
+			genreRepo.save(new Genre("Sci-Fi"));
+			genreRepo.save(new Genre("Historical"));
+			genreRepo.save(new Genre("Fantasy"));
+			genreRepo.save(new Genre("Action"));
+			genreRepo.save(new Genre("Adventure"));
+			genreRepo.save(new Genre("Horror"));
 
-			Director director2 = directorRepo.save(new Director("Ridley Scott", "null"));
-			Genre genre2 = genreRepo.save(new Genre("Historical"));
-			Movie movie2 = movieRepo.save(new Movie("Gladiator", "desc", "img", 2000, director2, genre2));
+			directorRepo.save(new Director("Ridley Scott", "img"));
+			directorRepo.save(new Director("Christopher Nolan", "img"));
+			directorRepo.save(new Director("Peter Jackson", "img"));
+			directorRepo.save(new Director("George Lucas", "img"));
+			directorRepo.save(new Director("James Cameron", "img"));
+
+			movieRepo.save(new Movie("Gladiator", "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.", "img", 2000, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Action")));
+			movieRepo.save(new Movie("Kingdom of Heaven", "Balian of Ibelin travels to Jerusalem during the Crusades of the 12th century, and there he finds himself as the defender of the city and its people.", "img", 2005, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Adventure")));
+			movieRepo.save(new Movie("Alien", "The crew of a commercial spacecraft encounters a deadly lifeform after investigating an unknown transmission.", "img", 1979, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Horror")));
+			movieRepo.save(new Movie("Blade Runner", "A blade runner must pursue and terminate four replicants who stole a ship in space and have returned to Earth to find their creator.", "img", 1982, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Sci-Fi")));
+			
+			// movieRepo.save(new Movie("Interstellar", "desc", "img", 2014, director1 , genre1));
 
 			log.info("succesful");
 		};
