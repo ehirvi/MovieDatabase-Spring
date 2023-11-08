@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import hh.sof03.moviedatabase.webcontrol.DirectorController;
-import hh.sof03.moviedatabase.webcontrol.GenreController;
+import hh.sof03.moviedatabase.webcontrol.AdminDirectorController;
+import hh.sof03.moviedatabase.webcontrol.AdminGenreController;
 import hh.sof03.moviedatabase.webcontrol.IndexController;
-import hh.sof03.moviedatabase.webcontrol.MovieController;
+import hh.sof03.moviedatabase.webcontrol.AdminMovieController;
 import hh.sof03.moviedatabase.webcontrol.MovieRestController;
 
 @SpringBootTest
@@ -18,16 +18,16 @@ class MoviedatabaseApplicationTests {
 	private MovieRestController movieRestController;
 
 	@Autowired
-	private MovieController movieController;
+	private AdminMovieController movieController;
 
 	@Autowired
 	private IndexController indexController;
 
 	@Autowired
-	private GenreController genreController;
+	private AdminGenreController genreController;
 
 	@Autowired
-	private DirectorController directorController;
+	private AdminDirectorController directorController;
 
 	@Test
 	void contextLoads() {

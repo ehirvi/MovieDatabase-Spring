@@ -17,7 +17,7 @@ import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/movies")
+@RequestMapping("/api/movies")
 public class MovieRestController {
     
     @Autowired

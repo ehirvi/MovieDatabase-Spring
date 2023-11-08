@@ -2,35 +2,40 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Panel</title>
+    <title>MovieDB</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <body>
     <div class="container text-center">
-        <h1 class="mt-2 mb-2">Control Panel</h1>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <h3>Logged in as: <span sec:authentication="name">admin</span></h3>
-            </div>
-            <div class="col-auto">
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out" class="btn btn-danger">
-                </form>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-2 mb-2 gap-1">
-            <div class="col-auto"><a href="/movielist" class="btn btn-primary">Movies</a></div>
-            <div class="col-auto"><a href="/genrelist" class="btn btn-primary">Genres</a></div>
-            <div class="col-auto"><a href="/directorlist" class="btn btn-primary">Directors</a></div>
+        <div class="row">
+            <a href="/login" class="btn btn-success col-auto m-2">Login</a>
+            <a href="/register" class="btn btn-primary col-auto m-2">Register</a>
+            <h1>MovieDB</h1>
         </div>
     </div>
-
+    <div class="container">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Release Year</th>
+                    <th>Director</th>
+                    <th>Genre</th>
+                </tr>
+                <tr th:each="movie : ${movies}">
+                    <td><a th:text="${movie.name}" th:href="@{/movie/{id}(id=${movie.id})}"></a></td> <!-- TODO -->
+                    <!-- <td th:text="${movie.imgFile}"></td> TODO: kuva tekstin sijaan -->
+                    <td th:text="${movie.release_year}"></td>
+                    <td th:text="${movie.director.name}"></td>
+                    <td th:text="${movie.genre.name}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

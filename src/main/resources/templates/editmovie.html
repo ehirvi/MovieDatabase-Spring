@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a movie</title>
+    <title th:text="${movie.name}"></title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
@@ -13,13 +13,14 @@
 
     <div class="container text-center">
         <div class="row">
-            <a href="/movielist" class="btn btn-primary col-auto m-2">Back</a>
-            <h1>Add details</h1>
+            <a href="/admin/movielist" class="btn btn-primary col-auto m-2">Back</a>
+            <h1>Edit details</h1>
         </div>
     </div>
 
     <div class="container">
-        <form th:object="${movie}" th:action="@{/movielist/save}" method="post">
+        <form th:object="${movie}" th:action="@{/admin/movielist/save}" method="post">
+            <input type="hidden" id="id" th:field="*{id}" readonly="readonly">
             <label for="name" class="form-label fw-bold">Name</label>
                 <input type="text" id="name" th:field="*{name}" class="form-control">
             <label for="description" class="form-label fw-bold">Description</label>
@@ -42,6 +43,7 @@
                 </select>
             <input type="submit" value="Save" class="btn btn-primary mt-3">
         </form>
+        <a th:href="@{/admin/movielist/delete/{id}(id=${movie.id})}" class="btn btn-danger mt-3">Delete</a>
     </div>
 
 </body>

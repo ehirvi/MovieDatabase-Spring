@@ -13,8 +13,9 @@ import hh.sof03.moviedatabase.domain.GenreRepository;
 import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
-@RequestMapping("/genrelist")
-public class GenreController {
+@RequestMapping("/admin/genrelist")
+// Security method
+public class AdminGenreController {
 
     @Autowired
     private GenreRepository genreRepository;
@@ -33,24 +34,24 @@ public class GenreController {
         Genre genre = genreRepository.findById(id).get();
         model.addAttribute("genre", genre);
         model.addAttribute("movies", movieRepository.findByGenre(genre));
-        return "genre";
+        return "editgenre";
     }    
 
     @GetMapping("/delete/{id}")
     public String deleteGenre(@PathVariable("id") Long id) {
         genreRepository.deleteById(id);
-        return "redirect:/genrelist";
+        return "redirect:/admin/genrelist";
     }
 
     @GetMapping("/add")
     public String addGenre(Model model) {
         model.addAttribute("genre", new Genre());
-        return "addgenre";
+        return "newgenre";
     }
 
     @PostMapping("/save")
     public String saveGenre(Genre genre) {
         genreRepository.save(genre);
-        return "redirect:/genrelist";
+        return "redirect:/admin/genrelist";
     }
 }

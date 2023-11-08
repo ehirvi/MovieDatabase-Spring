@@ -13,8 +13,9 @@ import hh.sof03.moviedatabase.domain.DirectorRepository;
 import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
-@RequestMapping("/directorlist")
-public class DirectorController {
+@RequestMapping("/admin/directorlist")
+// Security method
+public class AdminDirectorController {
     
     @Autowired
     private DirectorRepository directorRepository;
@@ -34,25 +35,25 @@ public class DirectorController {
         Director director = directorRepository.findById(id).get();
         model.addAttribute("director", director);
         model.addAttribute("movies", movieRepository.findByDirector(director));
-        return "director";
+        return "editdirector";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteDirector(@PathVariable("id") Long id) {
         directorRepository.deleteById(id);
-        return "redirect:/directorlist";
+        return "redirect:/admin/directorlist";
     }
 
     @GetMapping("/add")
     public String addDirector(Model model) {
         model.addAttribute("director", new Director());
-        return "adddirector";
+        return "newdirector";
     }
 
     @PostMapping("/save")
     public String saveDirector(Director director) {
         directorRepository.save(director);
-        return "redirect:/directorlist";
+        return "redirect:/admin/directorlist";
     }
 
 }
