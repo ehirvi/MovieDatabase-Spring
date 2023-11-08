@@ -26,7 +26,7 @@
                 </tr>
                 <tr th:each="director : ${directors}">
                     <td th:text="${director.id}"></td>
-                    <td><a th:text="${director.name}" th:href="@{/admin/directorlist/edit/{id}(id=${director.id})}"></a></td>
+                    <td><a th:text="${director.name}" th:href="@{/admin/directorlist/edit/{id}(id=${director.id})}" class="nav-link link-primary"></a></td>
                     <td th:text="${director.movies.size}"></td>
                 </tr>
             </tbody>

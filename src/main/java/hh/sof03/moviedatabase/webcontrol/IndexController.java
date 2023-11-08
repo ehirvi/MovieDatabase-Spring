@@ -31,12 +31,6 @@ public class IndexController {
         return "login";
     }
 
-    @GetMapping("/login_error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
-        return "login";
-    }
-
     
     @GetMapping("/admin")
     // Security method

@@ -37,7 +37,6 @@ public class WebSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/home", true)
-                        .failureUrl("/login_error")
                         .permitAll())
                 .logout(logout -> logout
                         .permitAll());
@@ -60,7 +59,7 @@ public class WebSecurityConfig {
         UserDetails user_2 = User
             .withUsername("admin")
             .password(passwordEncoder.encode("admin"))
-            .roles("USER", "ADMIN")
+            .roles("ADMIN")
             .build();
 
         users.add(user_1);
