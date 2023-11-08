@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login into MovieDB</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+
+    <div class="container text-center">
+        <div class="row">
+            <a th:href="@{/home}" class="btn btn-primary col-auto mt-3 mb-3">Home</a>
+            <h1>Please login</h1>
+        </div>
+    </div>
+
+    <div class="container" style="width: fit-content;">
+        <p th:if="${loginError}" class="alert alert-danger mt-1" role="alert">Invalid username or password</p>
+        <form th:action="@{/login}" method="post">
+            <input type="text" name="username" id="username" class="form-control mt-3 mb-3" placeholder="Username"
+                autofocus required>
+            <input type="password" name="password" id="password" class="form-control mt-3 mb-3" placeholder="Password"
+                required>
+            <input type="submit" value="Login" class="btn btn-success mt-3">
+        </form>
+    </div>
+
+</body>
+
+</html>

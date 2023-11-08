@@ -9,16 +9,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/")
 public class IndexController {
 
     @Autowired
     private MovieRepository movieRepository;
 
     @GetMapping
-    public String frontPage(Model model) {
+    public String indexPage() {
+        return "redirect:/home";
+    }
+
+    @GetMapping("/home")
+    public String homePage(Model model) {
         model.addAttribute("movies", movieRepository.findAll());
-        return "frontpage";
+        return "home";
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/login_error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
     }
 
     
