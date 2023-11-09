@@ -21,9 +21,9 @@
                 <form th:action="@{/logout}" method="post" class="col-auto">
                     <input type="submit" value="Sign out" class="btn btn-danger col-auto m-3">
                 </form>
-                <a sec:authorize="hasRole('USER')" th:href="@{/watchlist}"
+                <a sec:authorize="hasAuthority('USER')" th:href="@{/watchlist}"
                     class="nav-link link-primary col-auto mt-auto mb-auto">My Watchlist</a>
-                <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin}"
+                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin}"
                     class="nav-link link-primary col-auto mt-auto mb-auto">Admin Panel</a>
             </div>
         </div>

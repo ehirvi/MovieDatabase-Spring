@@ -18,7 +18,7 @@ public class Director {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
-    private long id;
+    private Long id;
 
     private String name;
     private String imgFile;
@@ -34,11 +34,11 @@ public class Director {
         this.imgFile = imgFile;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

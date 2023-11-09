@@ -13,6 +13,8 @@ import hh.sof03.moviedatabase.domain.Genre;
 import hh.sof03.moviedatabase.domain.GenreRepository;
 import hh.sof03.moviedatabase.domain.Movie;
 import hh.sof03.moviedatabase.domain.MovieRepository;
+import hh.sof03.moviedatabase.domain.User;
+import hh.sof03.moviedatabase.domain.UserRepository;
 
 @SpringBootApplication
 public class MoviedatabaseApplication {
@@ -24,7 +26,7 @@ public class MoviedatabaseApplication {
 	}
 
 	@Bean
-	public CommandLineRunner movieDemo(MovieRepository movieRepo, GenreRepository genreRepo, DirectorRepository directorRepo) {
+	public CommandLineRunner movieDemo(MovieRepository movieRepo, GenreRepository genreRepo, DirectorRepository directorRepo, UserRepository userRepo) {
 		return (args) -> {
 			genreRepo.save(new Genre("Sci-Fi"));
 			genreRepo.save(new Genre("Historical"));
@@ -45,6 +47,9 @@ public class MoviedatabaseApplication {
 			movieRepo.save(new Movie("Blade Runner", "A blade runner must pursue and terminate four replicants who stole a ship in space and have returned to Earth to find their creator.", "img", 1982, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Sci-Fi")));
 			
 			// movieRepo.save(new Movie("Interstellar", "desc", "img", 2014, director1 , genre1));
+
+			userRepo.save(new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER"));
+			userRepo.save(new User("admin", "$2a$10$g7LYNNvVePos9SFcMlsSKOtUbEMhBnm/uRUr3EWDXw36E5sEfGfbm", "ADMIN"));
 
 			log.info("succesful");
 		};
