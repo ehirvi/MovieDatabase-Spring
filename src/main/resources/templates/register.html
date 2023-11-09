@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register to MovieDB</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+
+    <div class="container text-center">
+        <div class="row">
+            <a th:href="@{/home}" class="btn btn-primary col-auto mt-3 mb-3">Home</a>
+            <h1>Enter your details</h1>
+        </div>
+    </div>
+
+    <div class="container" style="width: fit-content;">
+        <form th:object="${registerform}" th:action="@{/register}" method="post">
+            <input type="text" th:field="*{username}" class="form-control mt-3 mb-3" placeholder="Username" autofocus
+                required>
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
+            <input type="password" th:field="*{password}" class="form-control mt-3 mb-3" placeholder="Password"
+                required>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+            <input type="password" th:field="*{passwordCheck}" class="form-control mt-3 mb-3"
+                placeholder="Re-type Password" required>
+                <p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>
+            <input type="submit" value="Register" class="btn btn-success mt-3">
+        </form>
+    </div>
+
+</body>
+
+</html>
