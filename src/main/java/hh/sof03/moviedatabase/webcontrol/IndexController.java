@@ -1,5 +1,7 @@
 package hh.sof03.moviedatabase.webcontrol;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 // import org.springframework.security.access.prepost.PreAuthorize;
@@ -9,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import hh.sof03.moviedatabase.domain.MovieRepository;
@@ -76,6 +77,14 @@ public class IndexController {
             return "register";
         }
         return "redirect:/login";
+    }
+
+    @GetMapping("/watchlist")
+    public String watchList(Model model, Principal principal) {
+        String username = principal.getName();
+        User user = userRepository.findByUsername(username);
+        model.addAttribute("movies", user.getWatchlist());
+        return "watchlist";
     }
     
     @GetMapping("/admin")

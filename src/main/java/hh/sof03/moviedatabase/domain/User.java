@@ -1,14 +1,17 @@
 package hh.sof03.moviedatabase.domain;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name = "users")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
@@ -23,7 +26,12 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-    public User() {}
+    @OneToMany(mappedBy = "user")
+    private Set<Watchlist> watchlist;
+
+
+    public User() {
+    }
 
     public User(String username, String passwordHash, String role) {
         this.username = username;
@@ -61,6 +69,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Set<Watchlist> getWatchlist() {
+        return watchlist;
+    }
+
+    public void setWatchlist(Set<Watchlist> watchlist) {
+        this.watchlist = watchlist;
     }
 
 }
