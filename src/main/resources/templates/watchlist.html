@@ -5,13 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieDB</title>
+    <title>Watchlist</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 
 <body>
     <div class="container text-center">
-        <h1>My Watchlist</h1>
+        <div class="row">
+            <a th:href="@{/home}" class="btn btn-primary col-auto m-2">Home</a>
+        <h1>My Watchlist</h1></div>
     </div>
     <div class="container">
         <table class="table table-hover table-striped">
@@ -21,14 +23,16 @@
                     <th>Release Year</th>
                     <th>Director</th>
                     <th>Genre</th>
+                    <th></th>
                 </tr>
-                <tr th:each="movie : ${movies}">
-                    <td><a th:text="${movie.name}" th:href="@{/movie/{id}(id=${movie.id})}"
+                <tr th:each="entity : ${watchlist}">
+                    <td><a th:text="${entity.movie.name}" th:href="@{/movie/{id}(id=${entity.movie.id})}"
                             class="nav-link link-primary"></a></td> <!-- TODO -->
                     <!-- <td th:text="${movie.imgFile}"></td> TODO: kuva tekstin sijaan -->
-                    <td th:text="${movie.release_year}"></td>
-                    <td th:text="${movie.director.name}"></td>
-                    <td th:text="${movie.genre.name}"></td>
+                    <td th:text="${entity.movie.release_year}"></td>
+                    <td th:text="${entity.movie.director.name}"></td>
+                    <td th:text="${entity.movie.genre.name}"></td>
+                    <td><a th:href="@{/watchlist/delete/{id}(id=${entity.movie.id})}" class="nav-link link-primary text-danger">Remove</a></td>
                 </tr>
             </tbody>
         </table>

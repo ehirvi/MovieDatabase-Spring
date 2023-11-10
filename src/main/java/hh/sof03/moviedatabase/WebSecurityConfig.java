@@ -32,6 +32,7 @@ public class WebSecurityConfig {
                         .requestMatchers(antMatcher("/login")).permitAll()
                         .requestMatchers(antMatcher("/register")).permitAll()
                         .requestMatchers(antMatcher("/api/**")).permitAll()
+                        .requestMatchers(antMatcher("/movie/**")).permitAll()
                         .requestMatchers(antMatcher("/admin/**")).hasAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form

@@ -41,7 +41,7 @@
                             th:value="${genre.id}"
                             th:text="${genre.name}"></option>
                 </select>
-            <input type="submit" value="Save" class="btn btn-primary mt-3">
+            <input type="submit" value="Save" class="btn btn-success mt-3">
         </form>
         <a th:href="@{/admin/movielist/delete/{id}(id=${movie.id})}" class="btn btn-danger mt-3">Delete</a>
     </div>

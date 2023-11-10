@@ -1,7 +1,5 @@
 package hh.sof03.moviedatabase.webcontrol;
 
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 // import org.springframework.security.access.prepost.PreAuthorize;
@@ -10,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,7 +19,7 @@ import hh.sof03.moviedatabase.domain.UserRepository;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class IndexController {
 
     @Autowired
@@ -52,7 +51,8 @@ public class IndexController {
     }
 
     @PostMapping("/register")
-    public String userRegister(@Valid @ModelAttribute("registerform") RegisterForm registerForm, BindingResult bindingResult) {
+    public String userRegister(@Valid @ModelAttribute("registerform") RegisterForm registerForm,
+            BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
             if (registerForm.getPassword().equals(registerForm.getPasswordCheck())) {
                 String pwd = registerForm.getPassword();
@@ -79,14 +79,12 @@ public class IndexController {
         return "redirect:/login";
     }
 
-    @GetMapping("/watchlist")
-    public String watchList(Model model, Principal principal) {
-        String username = principal.getName();
-        User user = userRepository.findByUsername(username);
-        model.addAttribute("movies", user.getWatchlist());
-        return "watchlist";
+    @GetMapping("/movie/{id}")
+    public String getMovie(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("movie", movieRepository.findById(id).get());
+        return "movie";
     }
-    
+
     @GetMapping("/admin")
     // @PreAuthorize("hasAuthority('ADMIN')")
     public String adminPanel() {
