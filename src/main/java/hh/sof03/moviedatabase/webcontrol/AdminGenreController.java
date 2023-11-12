@@ -14,7 +14,6 @@ import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
 @RequestMapping("/admin/genrelist")
-// Security method
 public class AdminGenreController {
 
     @Autowired

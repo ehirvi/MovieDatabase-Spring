@@ -14,15 +14,13 @@ import hh.sof03.moviedatabase.domain.MovieRepository;
 
 @Controller
 @RequestMapping("/admin/directorlist")
-// Security method
 public class AdminDirectorController {
-    
+
     @Autowired
     private DirectorRepository directorRepository;
 
     @Autowired
     private MovieRepository movieRepository;
-
 
     @GetMapping
     public String getAllDirectors(Model model) {

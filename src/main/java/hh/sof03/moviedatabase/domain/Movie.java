@@ -2,6 +2,8 @@ package hh.sof03.moviedatabase.domain;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
+
 // import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -27,7 +29,7 @@ public class Movie {
 
     // @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "director_id")
     private Director director;
 
     // @JsonIgnore
@@ -35,7 +37,7 @@ public class Movie {
     @JoinColumn(name = "genre_id")
     private Genre genre;
     
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
     private Set<Watchlist> watchlist;
 
     
