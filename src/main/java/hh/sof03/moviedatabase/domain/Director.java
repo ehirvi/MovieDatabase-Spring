@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Director {
@@ -20,7 +22,10 @@ public class Director {
     @Column(nullable = false, updatable = false)
     private Long id;
 
+    @NotBlank
+    @Size(min = 1, max = 30)
     private String name;
+    
     private String imgFile;
 
     @JsonIgnore

@@ -19,9 +19,10 @@
     </div>
 
     <div class="container">
-        <form th:object="${genre}" th:action="@{/admin/genrelist/save}" method="post">
+        <form th:object="${genre}" th:action="@{/admin/genrelist/add/save}" method="post">
             <label for="name" class="form-label fw-bold">Name</label>
                 <input type="text" id="name" th:field="*{name}" class="form-control">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
             <input type="submit" value="Save" class="btn btn-success mt-3">
         </form>
     </div>

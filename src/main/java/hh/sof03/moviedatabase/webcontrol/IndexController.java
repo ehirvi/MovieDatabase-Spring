@@ -2,7 +2,6 @@ package hh.sof03.moviedatabase.webcontrol;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-// import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -86,7 +85,6 @@ public class IndexController {
     }
 
     @GetMapping("/admin")
-    // @PreAuthorize("hasAuthority('ADMIN')")
     public String adminPanel() {
         return "adminpanel";
     }

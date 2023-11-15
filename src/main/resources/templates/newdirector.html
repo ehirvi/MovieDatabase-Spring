@@ -19,9 +19,10 @@
     </div>
 
     <div class="container">
-        <form th:object="${director}" th:action="@{/admin/directorlist/save}" method="post">
+        <form th:object="${director}" th:action="@{/admin/directorlist/add/save}" method="post">
             <label for="name" class="form-label fw-bold">Name</label>
                 <input type="text" id="name" th:field="*{name}" class="form-control">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
             <label for="imgFile" class="form-label fw-bold">imgFile</label>
                 <input type="text" id="imgFile" th:field="*{imgFile}" class="form-control">
             <input type="submit" value="Save" class="btn btn-success mt-3">

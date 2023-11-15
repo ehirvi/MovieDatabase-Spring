@@ -4,7 +4,7 @@ import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 
-// import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +14,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Movie {
@@ -23,24 +26,31 @@ public class Movie {
     @Column(nullable = false, updatable = false)
     private Long id;
 
-    private String name, description, imgFile;
+    @NotBlank
+    @Size(min = 1, max = 50)
+    private String name;
 
+    @NotBlank
+    @Size(min = 1, max = 500)
+    private String description;
+
+    private String imgFile;
+
+    @NotNull
     private int release_year;
 
-    // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "director_id")
     private Director director;
 
-    // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
-    
+
+    @JsonIgnore
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
     private Set<Watchlist> watchlist;
 
-    
     public Movie() {
     }
 
