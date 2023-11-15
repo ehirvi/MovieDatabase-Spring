@@ -19,11 +19,17 @@
     </div>
 
     <div class="container">
-        <p class="lead" th:text="'Released in ' + ${movie.release_year}"></p>
-        <p class="lead" th:text="'Directed by ' + ${movie.director.name}"></p>
-        <p class="lead" th:text="${movie.description}"></p>
-        <a th:href="@{/watchlist/add/{id}(id=${movie.id})}" class="btn btn-success mt-3">Add to watchlist</a>
-        <p th:if="${success}" th:text="Succesfully added"></p>
+        <div class="d-flex justify-content-start">
+            <div class="me-3">
+                <img th:src="@{/images/movie/} + ${movie.id}" alt="movieposter" width="200" />
+            </div>
+            <div>
+                <p class="lead" th:text="'Released in ' + ${movie.release_year}"></p>
+                <p class="lead" th:text="'Directed by ' + ${movie.director.name}"></p>
+                <p class="lead" th:text="${movie.description}"></p>
+                <a th:href="@{/watchlist/add/{id}(id=${movie.id})}" class="btn btn-success mt-3">Add to watchlist</a>
+            </div>
+        </div>
     </div>
 
 </body>

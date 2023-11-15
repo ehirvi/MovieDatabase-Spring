@@ -25,8 +25,6 @@ public class Director {
     @NotBlank
     @Size(min = 1, max = 30)
     private String name;
-    
-    private String imgFile;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "director")
@@ -34,9 +32,8 @@ public class Director {
 
     public Director() {}
 
-    public Director(String name, String imgFile) {
+    public Director(String name) {
         this.name = name;
-        this.imgFile = imgFile;
     }
 
     public Long getId() {
@@ -53,14 +50,6 @@ public class Director {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImgFile() {
-        return imgFile;
-    }
-
-    public void setImgFile(String imgFile) {
-        this.imgFile = imgFile;
     }
 
     public List<Movie> getMovies() {

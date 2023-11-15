@@ -33,15 +33,15 @@
         <table class="table table-hover table-striped">
             <tbody>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Release Year</th>
                     <th>Director</th>
                     <th>Genre</th>
                 </tr>
                 <tr th:each="movie : ${movies}">
-                    <td><a th:text="${movie.name}" th:href="@{/movie/{id}(id=${movie.id})}"
-                            class="nav-link link-primary"></a></td> <!-- TODO -->
-                    <!-- <td th:text="${movie.imgFile}"></td> TODO: kuva tekstin sijaan -->
+                    <td><img th:src="@{images/movie/} + ${movie.id}" alt="movieposter" width="80"></td>
+                    <td><a th:text="${movie.name}" th:href="@{/movie/{id}(id=${movie.id})}" class="nav-link link-primary"></a></td>
                     <td th:text="${movie.release_year}"></td>
                     <td th:text="${movie.director.name}"></td>
                     <td th:text="${movie.genre.name}"></td>

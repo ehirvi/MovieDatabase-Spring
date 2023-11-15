@@ -19,7 +19,7 @@
     </div>
 
     <div class="container">
-        <form th:object="${movie}" th:action="@{/admin/movielist/edit/save}" method="post">
+        <form th:object="${movie}" th:action="@{/admin/movielist/edit/save}" method="post" enctype="multipart/form-data">
             <input type="hidden" id="id" th:field="*{id}" readonly="readonly">
             <label for="name" class="form-label fw-bold">Name</label>
                 <input type="text" id="name" th:field="*{name}" class="form-control">
@@ -27,8 +27,9 @@
             <label for="description" class="form-label fw-bold">Description</label>
                 <textarea rows="3" id="description" th:field="*{description}" class="form-control"></textarea>
                 <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</p>
-            <label for="imgFile" class="form-label fw-bold">imgFile</label>
-                <input type="text" id="imgFile" th:field="*{imgFile}" class="form-control">
+            <input type="hidden" id="imgFile" th:field="*{imgFile}" readonly>
+            <label for="imgFile" class="form-label fw-bold">imgFile (JPEG)</label>
+                <input type="file" id="imgfile" name="imgfile" accept="image/jpeg" class="form-control">
             <label for="release_year" class="form-label fw-bold">Release Year</label>
                 <input type="number" id="release_year" th:field="*{release_year}" class="form-control">
                 <p th:if="${#fields.hasErrors('release_year')}" th:errors="*{release_year}">Release Year Error</p>

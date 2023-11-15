@@ -19,6 +19,7 @@
         <table class="table table-hover table-striped">
             <tbody>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Release Year</th>
                     <th>Director</th>
@@ -26,9 +27,8 @@
                     <th></th>
                 </tr>
                 <tr th:each="entity : ${watchlist}">
-                    <td><a th:text="${entity.movie.name}" th:href="@{/movie/{id}(id=${entity.movie.id})}"
-                            class="nav-link link-primary"></a></td> <!-- TODO -->
-                    <!-- <td th:text="${movie.imgFile}"></td> TODO: kuva tekstin sijaan -->
+                    <td><img th:src="@{images/movie/} + ${entity.movie.id}" alt="movieposter" width="80"></td>
+                    <td><a th:text="${entity.movie.name}" th:href="@{/movie/{id}(id=${entity.movie.id})}" class="nav-link link-primary"></a></td>
                     <td th:text="${entity.movie.release_year}"></td>
                     <td th:text="${entity.movie.director.name}"></td>
                     <td th:text="${entity.movie.genre.name}"></td>

@@ -35,16 +35,16 @@ public class MoviedatabaseApplication {
 			genreRepo.save(new Genre("Adventure"));
 			genreRepo.save(new Genre("Horror"));
 
-			directorRepo.save(new Director("Ridley Scott", "img"));
-			directorRepo.save(new Director("Christopher Nolan", "img"));
-			directorRepo.save(new Director("Peter Jackson", "img"));
-			directorRepo.save(new Director("George Lucas", "img"));
-			directorRepo.save(new Director("James Cameron", "img"));
+			directorRepo.save(new Director("Ridley Scott"));
+			directorRepo.save(new Director("Christopher Nolan"));
+			directorRepo.save(new Director("Peter Jackson"));
+			directorRepo.save(new Director("George Lucas"));
+			directorRepo.save(new Director("James Cameron"));
 
-			movieRepo.save(new Movie("Gladiator", "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.", "img", 2000, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Action")));
-			movieRepo.save(new Movie("Kingdom of Heaven", "Balian of Ibelin travels to Jerusalem during the Crusades of the 12th century, and there he finds himself as the defender of the city and its people.", "img", 2005, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Adventure")));
-			movieRepo.save(new Movie("Alien", "The crew of a commercial spacecraft encounters a deadly lifeform after investigating an unknown transmission.", "img", 1979, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Horror")));
-			movieRepo.save(new Movie("Blade Runner", "A blade runner must pursue and terminate four replicants who stole a ship in space and have returned to Earth to find their creator.", "img", 1982, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Sci-Fi")));
+			movieRepo.save(new Movie("Gladiator", "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.", "ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg", 2000, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Action")));
+			movieRepo.save(new Movie("Kingdom of Heaven", "Balian of Ibelin travels to Jerusalem during the Crusades of the 12th century, and there he finds himself as the defender of the city and its people.", "uk55nBEFIQFveIiy9jvLGiVtk4h.jpg", 2005, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Adventure")));
+			movieRepo.save(new Movie("Alien", "The crew of a commercial spacecraft encounters a deadly lifeform after investigating an unknown transmission.", "vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg", 1979, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Horror")));
+			movieRepo.save(new Movie("Blade Runner", "A blade runner must pursue and terminate four replicants who stole a ship in space and have returned to Earth to find their creator.", "63N9uy8nd9j7Eog2axPQ8lbr3Wj.jpg", 1982, directorRepo.findByName("Ridley Scott"), genreRepo.findByName("Sci-Fi")));
 			
 			// movieRepo.save(new Movie("Interstellar", "desc", "img", 2014, director1 , genre1));
 
