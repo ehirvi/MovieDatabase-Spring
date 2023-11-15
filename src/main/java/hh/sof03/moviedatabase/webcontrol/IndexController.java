@@ -27,8 +27,6 @@ public class IndexController {
     @Autowired
     private UserRepository userRepository;
 
-    private static final String IMG_DIR = "src\\main\\resources\\static\\images\\";
-
     @GetMapping
     public String indexPage() {
         return "redirect:/home";
@@ -52,8 +50,7 @@ public class IndexController {
     }
 
     @PostMapping("/register")
-    public String userRegister(@Valid @ModelAttribute("registerform") RegisterForm registerForm,
-            BindingResult bindingResult) {
+    public String userRegister(@Valid @ModelAttribute("registerform") RegisterForm registerForm, BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) {
             if (registerForm.getPassword().equals(registerForm.getPasswordCheck())) {
                 String pwd = registerForm.getPassword();
