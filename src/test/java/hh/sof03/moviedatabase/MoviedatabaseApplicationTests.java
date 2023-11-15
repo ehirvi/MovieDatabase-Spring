@@ -9,7 +9,9 @@ import hh.sof03.moviedatabase.webcontrol.AdminDirectorController;
 import hh.sof03.moviedatabase.webcontrol.AdminGenreController;
 import hh.sof03.moviedatabase.webcontrol.IndexController;
 import hh.sof03.moviedatabase.webcontrol.AdminMovieController;
+import hh.sof03.moviedatabase.webcontrol.ImageController;
 import hh.sof03.moviedatabase.webcontrol.MovieRestController;
+import hh.sof03.moviedatabase.webcontrol.WatchlistController;
 
 @SpringBootTest
 class MoviedatabaseApplicationTests {
@@ -29,6 +31,12 @@ class MoviedatabaseApplicationTests {
 	@Autowired
 	private AdminDirectorController directorController;
 
+	@Autowired
+	private WatchlistController watchlistController;
+
+	@Autowired
+	private ImageController imageController;
+
 	@Test
 	void contextLoads() {
 		Assertions.assertThat(movieRestController).isNotNull();
@@ -36,6 +44,8 @@ class MoviedatabaseApplicationTests {
 		Assertions.assertThat(indexController).isNotNull();
 		Assertions.assertThat(genreController).isNotNull();
 		Assertions.assertThat(directorController).isNotNull();
+		Assertions.assertThat(watchlistController).isNotNull();
+		Assertions.assertThat(imageController).isNotNull();
 	}
 
 }
