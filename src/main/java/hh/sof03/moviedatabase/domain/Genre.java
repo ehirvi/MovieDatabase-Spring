@@ -18,7 +18,7 @@ import jakarta.validation.constraints.Size;
 public class Genre {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
 
